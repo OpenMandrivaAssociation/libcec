@@ -1,11 +1,11 @@
-%define snap 20120505
+%define snap 20120524
 
 %define major 1
 %define libname %mklibname cec %{major}
 %define devname %mklibname cec -d
 
 Name:		libcec
-Version:	1.6.2
+Version:	1.6.3
 Release:	%mkrel -c git%{snap} 1
 Summary:	Pulse-Eight CEC adapter control library
 License:	GPLv2+
@@ -15,6 +15,7 @@ URL:		http://libcec.pulse-eight.com/
 # git archive --prefix=libcec-$(date +%Y%m%d)/ --format=tar HEAD | xz > ../libcec-$(date +%Y%m%d).tar.xz
 Source0:	%{name}-%{snap}.tar.xz
 BuildRequires:	pkgconfig(libudev)
+BuildRequires:	lockdev-devel
 
 %description
 With libcec you can access your Pulse-Eight CEC adapter.
