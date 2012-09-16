@@ -1,11 +1,11 @@
-%define snap 20120815
+%define snap 20120917
 
 %define major 1
 %define libname %mklibname cec %{major}
 %define devname %mklibname cec -d
 
 Name:		libcec
-Version:	1.8.1
+Version:	1.9.0
 Release:	%mkrel -c git%{snap} 1
 Summary:	Pulse-Eight CEC adapter control library
 License:	GPLv2+
@@ -65,11 +65,7 @@ autoreconf -ifv
 %make
 
 %install
-%__rm -rf %{buildroot}
 %makeinstall_std
-
-%clean
-%__rm -rf %{buildroot}
 
 %files -n cec-utils
 %{_bindir}/cec-client
@@ -82,6 +78,3 @@ autoreconf -ifv
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}/*.h
-%if %{mdvver} < 201200
-%{_libdir}/%{name}.la
-%endif
