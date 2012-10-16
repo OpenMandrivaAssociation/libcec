@@ -1,11 +1,11 @@
-%define snap 20120917
+%define snap	20121016
 
-%define major 1
+%define major 2
 %define libname %mklibname cec %{major}
 %define devname %mklibname cec -d
 
 Name:		libcec
-Version:	1.9.0
+Version:	2.0.1
 Release:	%mkrel -c git%{snap} 1
 Summary:	Pulse-Eight CEC adapter control library
 License:	GPLv2+
