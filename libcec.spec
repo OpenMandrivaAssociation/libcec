@@ -1,19 +1,15 @@
-%define snap	20121016
-
 %define major 2
 %define libname %mklibname cec %{major}
 %define devname %mklibname cec -d
 
 Name:		libcec
-Version:	2.0.1
-Release:	%mkrel -c git%{snap} 1
+Version:	2.1.1
+Release:	1
 Summary:	Pulse-Eight CEC adapter control library
 License:	GPLv2+
 Group:		System/Libraries
 URL:		http://libcec.pulse-eight.com/
-# rm -rf libcec && git clone git://github.com/Pulse-Eight/libcec.git && cd libcec/
-# git archive --prefix=libcec-$(date +%Y%m%d)/ --format=tar HEAD | xz > ../libcec-$(date +%Y%m%d).tar.xz
-Source0:	%{name}-%{snap}.tar.xz
+Source0:	%{name}-%{version}.tar.bz2
 BuildRequires:	pkgconfig(libudev)
 BuildRequires:	lockdev-devel
 
@@ -33,6 +29,11 @@ With libcec you can access your Pulse-Eight CEC adapter.
 This package contains the command-line tools to configure and test your
 Pulse-Eight CEC adapter.
 
+%files -n cec-utils
+%{_bindir}/cec-client
+
+#----------------------------------------------------------------------------
+
 %package -n %{libname}
 Summary:	Shared library for Pulse-Eight CEC adapter control
 Group:		System/Libraries
@@ -43,6 +44,11 @@ With libcec you can access your Pulse-Eight CEC adapter.
 This package contains the shared library which allows programs to access your
 Pulse-Eight CEC adapter.
 
+%files -n %{libname}
+%{_libdir}/%{name}.so.%{major}*
+
+#----------------------------------------------------------------------------
+
 %package -n %{devname}
 Summary:	Development files for %{name}
 Group:		Development/C
@@ -50,14 +56,22 @@ Requires:	%{libname} = %{EVRD}
 Provides:	cec-devel = %{EVRD}
 Provides:	%{name}-devel = %{EVRD}
 
-%description -n %devname
+%description -n %{devname}
 With libcec you can access your Pulse-Eight CEC adapter.
 
 This package contains the files for developing applications which
 will use libcec.
 
+%files -n %{devname}
+%{_libdir}/%{name}.so
+%{_libdir}/pkgconfig/%{name}.pc
+%{_includedir}/%{name}/*.h
+
+
+#----------------------------------------------------------------------------
+
 %prep
-%setup -q -n %{name}-%{snap}
+%setup -q
 
 %build
 autoreconf -ifv
@@ -67,14 +81,3 @@ autoreconf -ifv
 %install
 %makeinstall_std
 
-%files -n cec-utils
-%{_bindir}/cec-client
-%{_bindir}/cec-config
-
-%files -n %{libname}
-%{_libdir}/%{name}.so.%{major}*
-
-%files -n %{devname}
-%{_libdir}/%{name}.so
-%{_libdir}/pkgconfig/%{name}.pc
-%{_includedir}/%{name}/*.h
