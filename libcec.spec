@@ -1,12 +1,11 @@
-%define	gittag	Pulse-Eight-libcec-54be21e
 %define major	2
 %define libname	%mklibname cec %{major}
 %define devname	%mklibname cec -d
 
 Summary:	Pulse-Eight CEC adapter control library
 Name:		libcec
-Version:	2.1.3
-Release:	5
+Version:	2.1.4
+Release:	1
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://libcec.pulse-eight.com/
@@ -51,7 +50,7 @@ This package contains the files for developing applications which
 will use libcec.
 
 %prep
-%setup -q -n %gittag
+%setup -qn %{name}-%{name}-%{version}
 autoreconf -ifv
 
 %build
