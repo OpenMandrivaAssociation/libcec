@@ -54,7 +54,7 @@ will use libcec.
 autoreconf -ifv
 
 %build
-%configure2_5x --disable-static
+%configure
 %make
 
 %install
