@@ -5,7 +5,7 @@
 Summary:	Pulse-Eight CEC adapter control library
 Name:		libcec
 Version:	2.1.4
-Release:	3
+Release:	4
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://libcec.pulse-eight.com/
@@ -54,7 +54,11 @@ will use libcec.
 autoreconf -ifv
 
 %build
-%configure
+%configure \
+%ifarch %{arm}
+		--enable-imx
+%endif
+
 %make
 
 %install
@@ -70,4 +74,3 @@ autoreconf -ifv
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}/*.h
-
