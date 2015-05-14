@@ -1,16 +1,16 @@
-%define	gittag	Pulse-Eight-libcec-54be21e
 %define major	2
 %define libname	%mklibname cec %{major}
 %define devname	%mklibname cec -d
 
 Summary:	Pulse-Eight CEC adapter control library
 Name:		libcec
-Version:	2.1.3
+Version:	2.2.0
 Release:	2
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://libcec.pulse-eight.com/
-Source0:	%{name}-%{version}.tar.gz
+Source0:	%{name}-%{version}.tar.xz
+Patch0:		libcec-2.2.0-imx6-support.patch
 BuildRequires:	lockdev-devel
 BuildRequires:	pkgconfig(libudev)
 
@@ -51,11 +51,17 @@ This package contains the files for developing applications which
 will use libcec.
 
 %prep
-%setup -q -n %gittag
-autoreconf -ifv
+%setup -q
+%patch0 -p1 -b .imx6~
+./bootstrap
 
 %build
-%configure2_5x --disable-static
+%configure2_5x \
+	--disable-static \
+%ifarch %{arm}
+		--enable-imx6
+%endif
+
 %make
 
 %install
@@ -71,4 +77,3 @@ autoreconf -ifv
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}/*.h
-
