@@ -65,7 +65,6 @@ will use libcec.
 
 %files -n cec-utils
 %{_bindir}/cec*-client*
-%{_bindir}/pyCecClient.py
 
 %files -n %{libname}
 %{_libdir}/%{name}.so.%{major}*
