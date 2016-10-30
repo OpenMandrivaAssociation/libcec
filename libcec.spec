@@ -11,6 +11,7 @@ Group:		System/Libraries
 Url:		http://libcec.pulse-eight.com/
 Source0:	https://github.com/Pulse-Eight/libcec/archive/%{name}-%{version}.tar.gz
 BuildRequires:	lockdev-devel
+BuildRequires:	cmake
 BuildRequires:	pkgconfig(libudev)
 BuildRequires:	pkgconfig(p8-platform)
 
