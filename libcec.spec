@@ -4,7 +4,7 @@
 
 Summary:	Pulse-Eight CEC adapter control library
 Name:		libcec
-Version:	4.0.0
+Version:	4.0.2
 Release:	1
 License:	GPLv2+
 Group:		System/Libraries
