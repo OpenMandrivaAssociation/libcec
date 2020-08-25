@@ -1,11 +1,11 @@
-%define major	4
+%define major	6
 %define libname	%mklibname cec %{major}
 %define devname	%mklibname cec -d
 
 Summary:	Pulse-Eight CEC adapter control library
 Name:		libcec
-Version:	4.0.4
-Release:	2
+Version:	6.0.2
+Release:	1
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://libcec.pulse-eight.com/
