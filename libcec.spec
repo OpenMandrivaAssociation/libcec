@@ -5,15 +5,19 @@
 Summary:	Pulse-Eight CEC adapter control library
 Name:		libcec
 Version:	6.0.2
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://libcec.pulse-eight.com/
 Source0:	https://github.com/Pulse-Eight/libcec/archive/%{name}-%{version}.tar.gz
-BuildRequires:	lockdev-devel
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(libudev)
+BuildRequires:	pkgconfig(lockdev)
+BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	pkgconfig(p8-platform)
+BuildRequires:	pkgconfig(python3)
+BuildRequires:	swig
 
 %description
 With libcec you can access your Pulse-Eight CEC adapter.
@@ -52,19 +56,22 @@ This package contains the files for developing applications which
 will use libcec.
 
 %prep
-%setup -q -n libcec-libcec-%{version}
+%autosetup -p1 -n libcec-libcec-%{version}
 
 %build
-%cmake -DHAVE_EXYNOS_API=1 \
+%cmake \
+	-DHAVE_EXYNOS_API=1 \
 	-DHAVE_TDA955X_API=1
 
-%make
+%make_build
 
 %install
-%makeinstall_std -C build
+%make_install -C build
 
 %files -n cec-utils
 %{_bindir}/cec*-client*
+%{_bindir}/pyCecClient
+%{python_sitelib}/*
 
 %files -n %{libname}
 %{_libdir}/%{name}.so.%{major}*
