@@ -10,6 +10,7 @@ License:	GPLv2+
 Group:		System/Libraries
 Url:		https://libcec.pulse-eight.com/
 Source0:	https://github.com/Pulse-Eight/libcec/archive/%{name}-%{version}.tar.gz
+BuildRequires:	make
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(libudev)
 BuildRequires:	pkgconfig(lockdev)
