@@ -72,7 +72,7 @@ will use libcec.
 %files -n cec-utils
 %{_bindir}/cec*-client*
 %{_bindir}/pyCecClient
-%{python_sitelib}/*
+#{python_sitelib}/*
 
 %files -n %{libname}
 %{_libdir}/%{name}.so.%{major}*
