@@ -1,15 +1,16 @@
-%define major	6
+%define major	7
 %define libname	%mklibname cec %{major}
 %define devname	%mklibname cec -d
 
 Summary:	Pulse-Eight CEC adapter control library
 Name:		libcec
-Version:	6.0.2
-Release:	4
+Version:	7.1.1
+Release:	1
 License:	GPLv2+
 Group:		System/Libraries
 Url:		https://libcec.pulse-eight.com/
 Source0:	https://github.com/Pulse-Eight/libcec/archive/%{name}-%{version}.tar.gz
+BuildRequires:	make
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(libudev)
 BuildRequires:	pkgconfig(lockdev)
@@ -68,10 +69,14 @@ will use libcec.
 %install
 %make_install -C build
 
+# remove unwanted static
+rm -f %{buildroot}%{_libdir}/libcec.a
+
 %files -n cec-utils
 %{_bindir}/cec*-client*
 %{_bindir}/pyCecClient
-%{python_sitelib}/*
+%{python_sitearch}/_pycec.so
+%{python_sitearch}/cec.py
 
 %files -n %{libname}
 %{_libdir}/%{name}.so.%{major}*
