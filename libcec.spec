@@ -1,4 +1,4 @@
-%define major	6
+%define major	7
 %define libname	%mklibname cec %{major}
 %define devname	%mklibname cec -d
 
