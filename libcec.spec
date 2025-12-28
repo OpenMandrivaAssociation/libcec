@@ -69,10 +69,14 @@ will use libcec.
 %install
 %make_install -C build
 
+# remove unwanted static
+rm -f %{buildroot}%{_libdir}/libcec.a
+
 %files -n cec-utils
 %{_bindir}/cec*-client*
 %{_bindir}/pyCecClient
-#{python_sitelib}/*
+%{python_sitearch}/_pycec.so
+%{python_sitearch}/cec.py
 
 %files -n %{libname}
 %{_libdir}/%{name}.so.%{major}*
