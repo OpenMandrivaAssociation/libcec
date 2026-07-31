@@ -4,7 +4,7 @@
 
 Summary:	Pulse-Eight CEC adapter control library
 Name:		libcec
-Version:	7.1.1
+Version:	8.1.1
 Release:	1
 License:	GPLv2+
 Group:		System/Libraries
@@ -57,7 +57,7 @@ This package contains the files for developing applications which
 will use libcec.
 
 %prep
-%autosetup -p1 -n libcec-libcec-%{version}
+%autosetup -p1 -n libcec-libcec-8.1.1
 
 %build
 %cmake \
