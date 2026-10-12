@@ -90,4 +90,5 @@ rm -f %{buildroot}%{_libdir}/libcec.a
 %files -n %{devname}
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/cmake/libcec/
 %{_includedir}/%{name}/*.h
