@@ -58,6 +58,12 @@ will use libcec.
 
 %prep
 %autosetup -p1 -n libcec-libcec-8.1.1
+# Python 3 removed the PyInt_* aliases.
+sed -i \
+	-e 's/PyInt_Check/PyLong_Check/g' \
+	-e 's/PyInt_AsLong/PyLong_AsLong/g' \
+	-e 's/PyInt_FromLong/PyLong_FromLong/g' \
+	src/libcec/SwigHelper.h
 
 %build
 %cmake \
