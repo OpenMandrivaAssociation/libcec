@@ -1,4 +1,4 @@
-%define major	7
+%define major	8
 %define libname	%mklibname cec %{major}
 %define devname	%mklibname cec -d
 
@@ -17,7 +17,7 @@ BuildRequires:	pkgconfig(lockdev)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	pkgconfig(p8-platform)
-BuildRequires:	pkgconfig(python3)
+BuildRequires:	pkgconfig(python)
 BuildRequires:	swig
 
 %description
